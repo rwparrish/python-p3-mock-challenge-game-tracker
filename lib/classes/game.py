@@ -1,8 +1,17 @@
 class Game:
     def __init__(self, title):
-        self.title = title
+        if len(title) > 0:
+            self._title = title
+        else:
+            raise Exception('Title must exist!!')
+        
         self._results = []
         self._players = []
+        
+    @property
+    def title(self):
+        return self._title
+    
         
     def results(self, new_result=None):
         from classes.result import Result
