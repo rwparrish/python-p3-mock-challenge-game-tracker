@@ -7,6 +7,17 @@ class Player:
         self._results = []
         self._games_played = []
         
+    @property
+    def username(self):
+        self.username
+        
+    @username.setter
+    def Username(self, value):
+        if 2 <= len(value) <= 16:
+            self.username = value
+        else:
+            raise Exception('Invalid username')
+            
     def results(self, new_result=None):
         from classes.result import Result
         pass
