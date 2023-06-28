@@ -9,22 +9,26 @@ class Player:
         
     @property
     def username(self):
-        self.username
+        return self._username
         
     @username.setter
-    def Username(self, value):
-        if 2 <= len(value) <= 16:
-            self.username = value
+    def username(self, value):
+        if isinstance(value, str) and 2 <= len(value) <= 16:
+            self._username = value
         else:
             raise Exception('Invalid username')
             
     def results(self, new_result=None):
         from classes.result import Result
-        pass
+        if new_result and isinstance(new_result, Result):
+            self._results.append(new_result)
+        return self._results
     
     def games_played(self, new_game=None):
         from classes.game import Game
-        pass
+        if new_game and isinstance(new_game, Game):
+            self._games_played.append(new_game)
+        return self._games_played
     
     def played_game(self, game):
         pass

@@ -7,16 +7,43 @@ class Result:
         self.game = game
         self.score = score
         
+        player.results(self)
+        player.games_played(game)
+        
+        game.results(self)
+        game.players(player)
+        
+        
     @property
     def score(self):
-        self.score
+        return self._score
     
     @score.setter
     def score(self, value):
         if 1 <= value <= 5000:
-            self.score = value
+            self._score = value
         else:
             raise Exception('Score must be')
+        
+    @property
+    def player(self):
+        return self._player
+    
+    @player.setter
+    def player(self, player):
+        from classes.player import Player
+        if player and isinstance(player, Player):
+            self._player = player
+        else:
+            raise Exception
+            
+    @property
+    def game(self):
+        return self._game
+        
+    
+        
+    
     
         
     
