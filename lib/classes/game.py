@@ -1,3 +1,5 @@
+import ipdb
+
 class Game:
     def __init__(self, title):
         self.title = title
@@ -28,4 +30,10 @@ class Game:
         return self._players
     
     def average_score(self, player):
-        pass
+        player_game_scores = [result.score for result in player._results if result.game == self]
+        average_score = sum(player_game_scores) / len(player_game_scores)
+        return average_score
+       
+
+        # iterate through player._results to check each result to see if its game matches this game
+        # then from that list of results we want the score of each added and then averaged

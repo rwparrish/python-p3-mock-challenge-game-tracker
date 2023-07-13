@@ -1,3 +1,5 @@
+import ipdb
+
 class Player:
 
     all = []
@@ -6,6 +8,7 @@ class Player:
         self.username = username
         self._results = []
         self._games_played = []
+        Player.all.append(self)
         
     @property
     def username(self):
@@ -31,12 +34,24 @@ class Player:
         return self._games_played
     
     def played_game(self, game):
-        pass
-    
+        if game in self._games_played:
+            return True
+        else:
+            return False
+      
     def num_times_played(self, game):
-        pass
+        game_player_score = [x for x in self._games_played if x == game]
+        # game_player_score = [result for result in game._results if result.player == self]
+        return len(game_player_score)
     
     @classmethod
     def highest_scored(cls, game):
-        pass
+        from classes.game import Game
+        if cls.all == 0:
+            return None
+        else:
+            highest_average_score = max([Game.average_score(game, player) and player for player in cls.all])
+        
+    
+        
         

@@ -6,6 +6,7 @@ class Result:
         self.player = player
         self.game = game
         self.score = score
+        Result.all.append(self)
         
         player.results(self)
         player.games_played(game)
@@ -41,7 +42,13 @@ class Result:
     def game(self):
         return self._game
         
-    
+    @game.setter
+    def game(self, game):
+        from classes.game import Game
+        if game and isinstance(game, Game):
+            self._game = game
+        else:
+            raise Exception
         
     
     
